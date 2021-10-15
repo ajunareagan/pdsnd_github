@@ -82,7 +82,7 @@ def load_data(city, month, day):
         
     return df
 
-def time_stats(df):
+def time_statistics(df):
     """Displays statistics on the most frequent times of travel."""
 
     print('\nCalculating The Most Frequent Times of Travel...\n')
@@ -97,13 +97,13 @@ def time_stats(df):
     print('The most common day of the week is: {}'.format(mostCommonDayOfWeek))
 
     # TO DO: display the most common start hour
-    most_common_start_hour=df['hour'].mode()[0]
-    print('The most common start hour is: {}'.format(most_common_start_hour))
+    mostCommonStartHour=df['hour'].mode()[0]
+    print('The most common start hour is: {}'.format(mostCommonStartHour))
 
     print("\nThis took %s seconds." % (time.time() - start_time))
     print('-'*40)
 
-def station_stats(df):
+def station_statistics(df):
     """Displays statistics on the most popular stations and trip."""
 
     print('\nCalculating The Most Popular Stations and Trip...\n')
@@ -124,7 +124,7 @@ def station_stats(df):
     print("\nThis took %s seconds." % (time.time() - start_time))
     print('-'*40)
 
-def trip_duration_stats(df):
+def trip_duration_statistics(df):
     """Displays statistics on the total and average trip duration."""
 
     print('\nCalculating Trip Duration...\n')
@@ -141,7 +141,7 @@ def trip_duration_stats(df):
     print("\nThis took %s seconds." % (time.time() - start_time))
     print('-'*40)
 
-def user_stats(df):
+def user_statistics(df):
     """Displays statistics on bikeshare users."""
 
     print('\nCalculating User Stats...\n')
@@ -159,17 +159,17 @@ def user_stats(df):
  
     # TO DO: Display counts of gender
     if 'Gender' in df.columns:
-        user_gender_starts(df)
+        user_gender_statistics(df)
 
     # TO DO: Display earliest, most recent, and most common year of birth
     
     if 'Birth Year' in df.columns:
-        user_birth_starts(df)
+        user_birth_statistics(df)
 
     print("\nThis took %s seconds." % (time.time() - start_time))
     print('-'*40)
     
-def user_gender_starts(df):
+def user_gender_statistics(df):
     """ function for user gender stats """
     print('Count of gender \n')
     gender_counts=df['Gender'].value_counts()
@@ -179,7 +179,7 @@ def user_gender_starts(df):
     
     print()
    
-def user_birth_starts(df):
+def user_birth_statistics(df):
     """ function for user birth stats """
     birth_year=df['Birth Year']
     #most common birth year
@@ -194,7 +194,7 @@ def user_birth_starts(df):
     most_earliest_birth_year =birth_year.min()
     print('Most earliest birth year is: ',most_earliest_birth_year)
     
-def calculate_stats(city,df):
+def calculate_statistics(city,df):
     """ stats on bikeshare users """
     
     #Total Trip duration per gender
@@ -226,19 +226,21 @@ def main():
         city, month, day = get_filters()
         df = load_data(city, month, day)
 
-        time_stats(df)
-        station_stats(df)
-        trip_duration_stats(df)
-        user_stats(df)
+        time_statistics(df)
+		
+        station_statistics(df)
+		
+        trip_duration_statistics(df)
+		
+        user_statistics(df)
         
-        calculate_stats(city,df)
+        calculate_statistics(city,df)
         
         display_raw_data(df)
 
         restart = input('\nWould you like to restart? Enter yes or no.\n')
         if restart.lower() != 'yes':
             break
-
 
 if __name__ == "__main__":
 	main()
