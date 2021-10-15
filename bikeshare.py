@@ -245,7 +245,7 @@ def main():
         station_stats(df)
         trip_duration_stats(df)
         user_stats(df)
-        
+        #call a function to calculate user stats 
         calculate_stats(city,df)
         
         display_raw_data(df)
